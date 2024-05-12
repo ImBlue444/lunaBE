@@ -18,9 +18,7 @@ const orderSchema = new mongoose.Schema({
     required: true,
   },
   urgency: {
-    type: Number,
-    min: 1,
-    max: 5,
+    type: String,
     required: true,
   },
   orderManager: {
@@ -41,10 +39,6 @@ const orderSchema = new mongoose.Schema({
   },
   activity: {
     ricezioneAlluminio: {
-      isEnabled: {
-        type: Boolean,
-        required: true,
-      },
       expire: { type: Date, default: Date.now, required: true },
       completed: { type: Date, default: null },
       status: {

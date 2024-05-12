@@ -14,9 +14,26 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { orderName, materialShelf, priority, urgency, orderManager, activity} = req.body;
-    const { ricezioneAlluminio, ricezioneVetri, taglio, lavorazione, assemblaggio, installazioneVetri, imballaggio, trasporto, consegnaInstallazione } = activity;
-    
+    const {
+      orderName,
+      materialShelf,
+      priority,
+      urgency,
+      orderManager,
+      activity,
+    } = req.body;
+    const {
+      ricezioneAlluminio,
+      ricezioneVetri,
+      taglio,
+      lavorazione,
+      assemblaggio,
+      installazioneVetri,
+      imballaggio,
+      trasporto,
+      consegnaInstallazione,
+    } = activity;
+
     const order = new Order({
       orderName,
       materialShelf,
@@ -25,7 +42,6 @@ router.post("/", async (req, res) => {
       orderManager,
       activity: {
         ricezioneAlluminio: {
-          isEnabled: ricezioneAlluminio.isEnabled,
           expire: ricezioneAlluminio.expire,
           completed: ricezioneAlluminio.completed,
           target: ricezioneAlluminio.target,
@@ -33,7 +49,6 @@ router.post("/", async (req, res) => {
           note: ricezioneAlluminio.note,
         },
         ricezioneVetri: {
-          isEnabled: ricezioneVetri.isEnabled,
           expire: ricezioneVetri.expire,
           completed: ricezioneVetri.completed,
           target: ricezioneVetri.target,
@@ -41,7 +56,6 @@ router.post("/", async (req, res) => {
           note: ricezioneVetri.note,
         },
         taglio: {
-          isEnabled: taglio.isEnabled,
           expire: taglio.expire,
           completed: taglio.completed,
           target: taglio.target,
@@ -49,7 +63,6 @@ router.post("/", async (req, res) => {
           note: taglio.note,
         },
         lavorazione: {
-          isEnabled: lavorazione.isEnabled,
           expire: lavorazione.expire,
           completed: lavorazione.completed,
           target: lavorazione.target,
@@ -57,7 +70,6 @@ router.post("/", async (req, res) => {
           note: lavorazione.note,
         },
         assemblaggio: {
-          isEnabled: assemblaggio.isEnabled,
           expire: assemblaggio.expire,
           completed: assemblaggio.completed,
           target: assemblaggio.target,
@@ -65,7 +77,6 @@ router.post("/", async (req, res) => {
           note: assemblaggio.note,
         },
         installazioneVetri: {
-          isEnabled: installazioneVetri.isEnabled,
           expire: installazioneVetri.expire,
           completed: installazioneVetri.completed,
           target: installazioneVetri.target,
@@ -73,7 +84,6 @@ router.post("/", async (req, res) => {
           note: installazioneVetri.note,
         },
         imballaggio: {
-          isEnabled: imballaggio.isEnabled,
           expire: imballaggio.expire,
           completed: imballaggio.completed,
           target: imballaggio.target,
@@ -81,7 +91,6 @@ router.post("/", async (req, res) => {
           note: imballaggio.note,
         },
         trasporto: {
-          isEnabled: trasporto.isEnabled,
           expire: trasporto.expire,
           completed: trasporto.completed,
           target: trasporto.target,
@@ -89,7 +98,6 @@ router.post("/", async (req, res) => {
           note: trasporto.note,
         },
         consegnaInstallazione: {
-          isEnabled: consegnaInstallazione.isEnabled,
           expire: consegnaInstallazione.expire,
           completed: consegnaInstallazione.completed,
           target: consegnaInstallazione.target,
