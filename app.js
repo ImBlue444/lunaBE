@@ -1,5 +1,6 @@
 var express = require("express");
 const mongoose = require("mongoose");
+require('dotenv').config();
 
 const cors = require("cors");
 var path = require("path");
@@ -11,9 +12,10 @@ var usersRouter = require("./routes/users");
 var ordersRouter = require("./routes/orders");
 
 mongoose
-  .connect("mongodb://localhost:27017/lunaDb", {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    dbName: "luna",
   })
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Failed to connect to MongoDB", err));
