@@ -17,7 +17,7 @@ const orderSchema = new mongoose.Schema({
     max: 5,
     required: true,
   },
-  priority: {
+  urgency: {
     type: Number,
     min: 1,
     max: 5,

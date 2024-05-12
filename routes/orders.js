@@ -14,8 +14,82 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const order = new Order({ name, email, password });
+    const { orderName, materialShelf, priority, urgency, orderManager, activity} = req.body;
+    const { ricezioneAlluminio, ricezioneVetri, taglio, lavorazione, assemblaggio, installazioneVetri, imballaggio, trasporto, consegnaInstallazione } = activity;
+    
+    const order = new Order({
+      orderName,
+      materialShelf,
+      priority,
+      urgency,
+      orderManager,
+      activity: {
+        ricezioneAlluminio:{
+          isEnabled,
+          expire,        
+          completed,
+          target,
+          activityManager,
+          note,
+        },
+        ricezioneVetri:{
+          isEnabled,
+          expire,
+          completed,
+          target,
+          activityManager,
+          note,},
+        taglio:{
+          isEnabled,
+          expire,
+          completed,
+          target,
+          activityManager,
+          note,},
+        lavorazione:{
+          isEnabled,
+          expire,
+          completed,
+          target,
+          activityManager,
+          note,},
+        assemblaggio:{
+          isEnabled,
+          expire,
+          completed,
+          target,
+          activityManager,
+          note,},
+        installazioneVetri:{
+          isEnabled,
+          expire,
+          completed,
+          target,
+          activityManager,
+          note,},
+        imballaggio:{
+          isEnabled,
+          expire,
+          completed,
+          target,
+          activityManager,
+          note,},
+        trasporto:{
+          isEnabled,
+          expire,
+          completed,
+          target,
+          activityManager,
+          note,},
+        consegnaInstallazione:{
+          isEnabled,
+          expire,
+          completed,
+          target,
+          activityManager,
+          note,},
+      },
+    });
     await order.save();
     res.status(201).json(order);
   } catch (error) {
