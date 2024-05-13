@@ -43,7 +43,8 @@ const orderSchema = new mongoose.Schema({
       completed: { type: Date, default: null },
       status: {
         type: String,
-        enum: ["lavorazione", "standby", "bloccato", "completato"],
+        default: "Standby",
+        enum: ["Lavorazione", "Standby", "Bloccato", "Completato"],
       },
       target: {
         type: String,
@@ -76,7 +77,8 @@ const orderSchema = new mongoose.Schema({
       completed: { type: Date, default: null },
       status: {
         type: String,
-        enum: ["lavorazione", "standby", "bloccato", "completato"],
+        default: "Standby",
+        enum: ["Lavorazione", "Standby", "Bloccato", "Completato"],
       },
       target: {
         type: String,
@@ -108,7 +110,8 @@ const orderSchema = new mongoose.Schema({
       completed: { type: Date, default: null },
       status: {
         type: String,
-        enum: ["lavorazione", "standby", "bloccato", "completato"],
+        default: "Standby",
+        enum: ["Lavorazione", "Standby", "Bloccato", "Completato"],
       },
       target: {
         type: String,
@@ -140,7 +143,8 @@ const orderSchema = new mongoose.Schema({
       completed: { type: Date, default: null },
       status: {
         type: String,
-        enum: ["lavorazione", "standby", "bloccato", "completato"],
+        default: "Standby",
+        enum: ["Lavorazione", "Standby", "Bloccato", "Completato"],
       },
       target: {
         type: String,
@@ -172,7 +176,8 @@ const orderSchema = new mongoose.Schema({
       completed: { type: Date, default: null },
       status: {
         type: String,
-        enum: ["lavorazione", "standby", "bloccato", "completato"],
+        default: "Standby",
+        enum: ["Lavorazione", "Standby", "Bloccato", "Completato"],
       },
       target: {
         type: String,
@@ -204,7 +209,8 @@ const orderSchema = new mongoose.Schema({
       completed: { type: Date, default: null },
       status: {
         type: String,
-        enum: ["lavorazione", "standby", "bloccato", "completato"],
+        default: "Standby",
+        enum: ["Lavorazione", "Standby", "Bloccato", "Completato"],
       },
       target: {
         type: String,
@@ -236,7 +242,8 @@ const orderSchema = new mongoose.Schema({
       completed: { type: Date, default: null },
       status: {
         type: String,
-        enum: ["lavorazione", "standby", "bloccato", "completato"],
+        default: "Standby",
+        enum: ["Lavorazione", "Standby", "Bloccato", "Completato"],
       },
       target: {
         type: String,
@@ -268,7 +275,8 @@ const orderSchema = new mongoose.Schema({
       completed: { type: Date, default: null },
       status: {
         type: String,
-        enum: ["lavorazione", "standby", "bloccato", "completato"],
+        default: "Standby",
+        enum: ["Lavorazione", "Standby", "Bloccato", "Completato"],
       },
       target: {
         type: String,
@@ -300,7 +308,8 @@ const orderSchema = new mongoose.Schema({
       completed: { type: Date, default: null },
       status: {
         type: String,
-        enum: ["lavorazione", "standby", "bloccato", "completato"],
+        default: "Standby",
+        enum: ["Lavorazione", "Standby", "Bloccato", "Completato"],
       },
       target: {
         type: String,

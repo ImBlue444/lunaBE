@@ -43,6 +43,7 @@ router.post("/", async (req, res) => {
       activity: {
         ricezioneAlluminio: {
           expire: ricezioneAlluminio.expire,
+          status: ricezioneAlluminio.status,
           completed: ricezioneAlluminio.completed,
           target: ricezioneAlluminio.target,
           activityManager: ricezioneAlluminio.activityManager,
@@ -50,6 +51,7 @@ router.post("/", async (req, res) => {
         },
         ricezioneVetri: {
           expire: ricezioneVetri.expire,
+          status: ricezioneVetri.status,
           completed: ricezioneVetri.completed,
           target: ricezioneVetri.target,
           activityManager: ricezioneVetri.activityManager,
@@ -57,6 +59,7 @@ router.post("/", async (req, res) => {
         },
         taglio: {
           expire: taglio.expire,
+          status: taglio.status,
           completed: taglio.completed,
           target: taglio.target,
           activityManager: taglio.activityManager,
@@ -64,6 +67,7 @@ router.post("/", async (req, res) => {
         },
         lavorazione: {
           expire: lavorazione.expire,
+          status: lavorazione.status,
           completed: lavorazione.completed,
           target: lavorazione.target,
           activityManager: lavorazione.activityManager,
@@ -71,6 +75,7 @@ router.post("/", async (req, res) => {
         },
         assemblaggio: {
           expire: assemblaggio.expire,
+          status: assemblaggio.status,
           completed: assemblaggio.completed,
           target: assemblaggio.target,
           activityManager: assemblaggio.activityManager,
@@ -78,6 +83,7 @@ router.post("/", async (req, res) => {
         },
         installazioneVetri: {
           expire: installazioneVetri.expire,
+          status: installazioneVetri.status,
           completed: installazioneVetri.completed,
           target: installazioneVetri.target,
           activityManager: installazioneVetri.activityManager,
@@ -85,6 +91,7 @@ router.post("/", async (req, res) => {
         },
         imballaggio: {
           expire: imballaggio.expire,
+          status: imballaggio.status,
           completed: imballaggio.completed,
           target: imballaggio.target,
           activityManager: imballaggio.activityManager,
@@ -92,6 +99,7 @@ router.post("/", async (req, res) => {
         },
         trasporto: {
           expire: trasporto.expire,
+          status: trasporto.status,
           completed: trasporto.completed,
           target: trasporto.target,
           activityManager: trasporto.activityManager,
@@ -99,6 +107,7 @@ router.post("/", async (req, res) => {
         },
         consegnaInstallazione: {
           expire: consegnaInstallazione.expire,
+          status: consegnaInstallazione.status,
           completed: consegnaInstallazione.completed,
           target: consegnaInstallazione.target,
           activityManager: consegnaInstallazione.activityManager,
