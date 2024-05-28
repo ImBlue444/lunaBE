@@ -10,6 +10,7 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var ordersRouter = require("./routes/orders");
+var authRouter = require("./routes/auth");
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -32,5 +33,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/orders", ordersRouter); // Gestisce tutte le route per /orders
+app.use("/auth", authRouter);
 
 module.exports = app;
