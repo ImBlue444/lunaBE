@@ -97,6 +97,43 @@ router.patch("/:orderId/:activityField/status", async (req, res) => {
   }
 });
 
+router.patch("/:orderId/:activityField/completed", async (req, res) => {
+  try {
+    const { orderId, activityField } = req.params;
+    const { completed } = req.body;
+
+    // Verifica se l'ID è valido
+    if (!mongoose.Types.ObjectId.isValid(orderId)) {
+      console.log(`Invalid ID: ${orderId}`); // Log per debug
+      return res.status(400).send("ID non valido");
+    }
+
+    // Costruisci il percorso del campo dinamicamente
+    const updatePath = `activity.${activityField}.completed`;
+
+    // Crea un oggetto per aggiornare il campo dinamicamente
+    const updateObject = {};
+    updateObject[updatePath] = completed;
+
+    // Esegui l'aggiornamento
+    const updatedDoc = await Order.findByIdAndUpdate(
+      orderId,
+      { $set: updateObject },
+      { new: true }
+    );
+
+    if (!updatedDoc) {
+      console.log(`Order with ID: ${orderId} not found for update`);
+      return res.status(404).send("Documento non trovato");
+    }
+
+    res.send(updatedDoc);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+});
+
 // Route per ottenere tutti gli ordini
 router.get("/", async (req, res) => {
   try {

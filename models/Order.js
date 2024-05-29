@@ -70,6 +70,7 @@ const orderSchema = new mongoose.Schema({
       note: {
         type: String,
         required: false,
+        default: "",
       },
     },
     ricezioneVetri: {
@@ -103,6 +104,7 @@ const orderSchema = new mongoose.Schema({
       note: {
         type: String,
         required: false,
+        default: "",
       },
     },
     taglio: {
@@ -136,6 +138,7 @@ const orderSchema = new mongoose.Schema({
       note: {
         type: String,
         required: false,
+        default: "",
       },
     },
     lavorazione: {
@@ -169,6 +172,7 @@ const orderSchema = new mongoose.Schema({
       note: {
         type: String,
         required: false,
+        default: "",
       },
     },
     assemblaggio: {
@@ -202,6 +206,7 @@ const orderSchema = new mongoose.Schema({
       note: {
         type: String,
         required: false,
+        default: "",
       },
     },
     installazioneVetri: {
@@ -235,6 +240,7 @@ const orderSchema = new mongoose.Schema({
       note: {
         type: String,
         required: false,
+        default: "",
       },
     },
     imballaggio: {
@@ -268,6 +274,7 @@ const orderSchema = new mongoose.Schema({
       note: {
         type: String,
         required: false,
+        default: "",
       },
     },
     trasporto: {
@@ -301,6 +308,7 @@ const orderSchema = new mongoose.Schema({
       note: {
         type: String,
         required: false,
+        default: "",
       },
     },
     consegnaInstallazione: {
@@ -334,6 +342,7 @@ const orderSchema = new mongoose.Schema({
       note: {
         type: String,
         required: false,
+        default: "",
       },
     },
   },
