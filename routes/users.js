@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
     }
     // Genera il token JWT
     const token = jwt.sign({ userId: user._id }, "segreto", {
-      expiresIn: "1h",
+      expiresIn: "8h",
     });
 
     // Invia il token come parte della risposta
@@ -29,6 +29,23 @@ router.post("/", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Errore durante il login" });
+  }
+});
+
+// Route per ottenere un utente tramite ID
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    // Cerca l'utente nel database tramite ID
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: "Utente non trovato" });
+    }
+    // Restituisci l'utente come parte della risposta
+    res.json({ user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Errore durante la ricerca dell'utente" });
   }
 });
 
