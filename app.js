@@ -11,6 +11,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var ordersRouter = require("./routes/orders");
 var authRouter = require("./routes/auth");
+var archiveRouter = require("./routes/archive");
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -34,5 +35,6 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/orders", ordersRouter); // Gestisce tutte le route per /orders
 app.use("/auth", authRouter);
+app.use("/archive", archiveRouter);
 
 module.exports = app;
