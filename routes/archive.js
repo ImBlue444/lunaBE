@@ -47,4 +47,14 @@ router.post('/:id', async (req, res) => {
     }
 });
 
+router.get('/', async (req, res) => {
+    try {
+        const archivedOrders = await Archived.find();
+        res.status(200).send(archivedOrders);
+    } catch (error) {
+        console.error('Errore durante la ricerca degli ordini archiviati:', error.message);
+        res.status(500).send('Errore durante la ricerca degli ordini archiviati');
+    }
+})
+
 module.exports = router;
