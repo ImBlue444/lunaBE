@@ -135,7 +135,7 @@ router.patch("/:orderId/:activityField/completed", async (req, res) => {
 });
 
 // Route PUT per aggiornare un ordine
-router.put("/:orderId", async (req, res) => {
+router.patch("/:orderId", async (req, res) => {
   try {
     const orderId = req.params.orderId;
     const {
