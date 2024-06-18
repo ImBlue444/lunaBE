@@ -11,10 +11,8 @@ const orderSchema = new mongoose.Schema({
     required: true,
     unique: false,
   },
-  priority: {
-    type: Number,
-    min: 1,
-    max: 5,
+  accessori: {
+    type: String,
     required: true,
   },
   urgency: {
@@ -38,6 +36,41 @@ const orderSchema = new mongoose.Schema({
     ],
   },
   activity: {
+    ricezioneAccessori: {
+      expire: { type: Date, default: Date.now, required: true },
+      completed: { type: Date, default: null },
+      status: {
+        type: String,
+        default: "Standby",
+        enum: ["Lavorazione", "Standby", "Bloccato", "Completato"],
+      },
+      target: {
+        type: String,
+        enum: ["ok", "anticipo", "ritardo"],
+      },
+      activityManager: {
+        type: String,
+        required: true,
+        enum: [
+          "A.Cappello",
+          "L.Cappello",
+          "C.Toia",
+          "M.Cappello",
+          "F.Cusimano",
+          "G.Cusimano",
+          "M.Camarotta",
+          "Rostick",
+          "N.Blay",
+          "P.Zanda",
+        ],
+      },
+
+      note: {
+        type: String,
+        required: false,
+        default: "",
+      },
+    },
     ricezioneAlluminio: {
       expire: { type: Date, default: Date.now, required: true },
       completed: { type: Date, default: null },

@@ -141,7 +141,7 @@ router.patch("/:orderId", async (req, res) => {
     const {
       orderName,
       materialShelf,
-      priority,
+      accessori,
       urgency,
       orderManager,
       activity,
@@ -157,10 +157,11 @@ router.patch("/:orderId", async (req, res) => {
     const updateObject = {
       orderName,
       materialShelf,
-      priority,
+      accessori,
       urgency,
       orderManager,
       activity: {
+        ricezioneAccessori: activity.ricezioneAccessori,
         ricezioneAlluminio: activity.ricezioneAlluminio,
         ricezioneVetri: activity.ricezioneVetri,
         taglio: activity.taglio,
@@ -209,7 +210,7 @@ router.post("/", async (req, res) => {
     const {
       orderName,
       materialShelf,
-      priority,
+      accessori,
       urgency,
       orderManager,
       activity,
@@ -218,10 +219,11 @@ router.post("/", async (req, res) => {
     const order = new Order({
       orderName,
       materialShelf,
-      priority,
+      accessori,
       urgency,
       orderManager,
       activity: {
+        ricezioneAccessori: activity.ricezioneAccessori,
         ricezioneAlluminio: activity.ricezioneAlluminio,
         ricezioneVetri: activity.ricezioneVetri,
         taglio: activity.taglio,
