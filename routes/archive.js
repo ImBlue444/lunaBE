@@ -72,15 +72,23 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
+  const orderId = req.params.id;
   try {
-    const archivedOrders = await Archived.find();
-    res.status(200).send(archivedOrders);
+    const archivedOrder = await Archived.findById(orderId);
+    if (!archivedOrder) {
+      throw new Error("Ordine archiviato non trovato");
+    }
+    res.status(200).send(archivedOrder);
   } catch (error) {
     console.error(
-      "Errore durante la ricerca degli ordini archiviati:",
+      `Errore durante la ricerca dell'ordine archiviato ${orderId}:`,
       error.message
     );
-    res.status(500).send("Errore durante la ricerca degli ordini archiviati");
+    if (error.message === "Ordine archiviato non trovato") {
+      res.status(404).send(error.message);
+    } else {
+      res.status(500).send("Errore durante la ricerca dell'ordine archiviato");
+    }
   }
 });
 
