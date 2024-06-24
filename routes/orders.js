@@ -246,4 +246,30 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Route DELETE per eliminare un ordine
+router.delete("/:orderId", async (req, res) => {
+  try {
+    const orderId = req.params.orderId;
+
+    // Verifica se l'ID è valido
+    if (!mongoose.Types.ObjectId.isValid(orderId)) {
+      console.log(`Invalid ID: ${orderId}`); // Log per debug
+      return res.status(400).send("ID non valido");
+    }
+
+    // Esegui l'eliminazione
+    const deletedDoc = await Order.findByIdAndDelete(orderId);
+
+    if (!deletedDoc) {
+      console.log(`Order with ID: ${orderId} not found for deletion`); // Log per debug
+      return res.status(404).send("Documento non trovato");
+    }
+
+    res.send(deletedDoc);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+});
+
 module.exports = router;

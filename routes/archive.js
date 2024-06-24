@@ -92,4 +92,27 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  const orderId = req.params.id;
+  try {
+    const deletedOrder = await Archived.findByIdAndDelete(orderId);
+    if (!deletedOrder) {
+      throw new Error("Ordine archiviato non trovato");
+    }
+    res.status(200).send(`Ordine archiviato ${orderId} eliminato con successo`);
+  } catch (error) {
+    console.error(
+      `Errore durante l'eliminazione dell'ordine archiviato ${orderId}:`,
+      error.message
+    );
+    if (error.message === "Ordine archiviato non trovato") {
+      res.status(404).send(error.message);
+    } else {
+      res
+        .status(500)
+        .send("Errore durante l'eliminazione dell'ordine archiviato");
+    }
+  }
+});
+
 module.exports = router;
