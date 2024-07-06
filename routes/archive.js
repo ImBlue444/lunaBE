@@ -38,6 +38,7 @@ router.post("/:id", async (req, res) => {
     await moveOrderToArchive(orderId);
     await Order.findByIdAndDelete(orderId);
     res.status(200).send(`Ordine ${orderId} archiviato con successo`);
+    return;
   } catch (error) {
     console.error(
       `Errore durante l'archiviazione dell'ordine ${orderId}:`,
@@ -48,8 +49,10 @@ router.post("/:id", async (req, res) => {
       "Ordine non completato e quindi non può essere archiviato"
     ) {
       res.status(400).send(error.message);
+      return;
     } else if (error.message === "Ordine non trovato") {
       res.status(404).send(error.message);
+      return;
     } else {
       res
         .status(500)
@@ -62,12 +65,14 @@ router.get("/", async (req, res) => {
   try {
     const archivedOrders = await Archived.find();
     res.status(200).send(archivedOrders);
+    return;
   } catch (error) {
     console.error(
       "Errore durante la ricerca degli ordini archiviati:",
       error.message
     );
     res.status(500).send("Errore durante la ricerca degli ordini archiviati");
+    return;
   }
 });
 
@@ -79,6 +84,7 @@ router.get("/:id", async (req, res) => {
       throw new Error("Ordine archiviato non trovato");
     }
     res.status(200).send(archivedOrder);
+    return;
   } catch (error) {
     console.error(
       `Errore durante la ricerca dell'ordine archiviato ${orderId}:`,
@@ -86,8 +92,10 @@ router.get("/:id", async (req, res) => {
     );
     if (error.message === "Ordine archiviato non trovato") {
       res.status(404).send(error.message);
+      return;
     } else {
       res.status(500).send("Errore durante la ricerca dell'ordine archiviato");
+      return;
     }
   }
 });
@@ -100,6 +108,7 @@ router.delete("/:id", async (req, res) => {
       throw new Error("Ordine archiviato non trovato");
     }
     res.status(200).send(`Ordine archiviato ${orderId} eliminato con successo`);
+    return;
   } catch (error) {
     console.error(
       `Errore durante l'eliminazione dell'ordine archiviato ${orderId}:`,
@@ -107,10 +116,12 @@ router.delete("/:id", async (req, res) => {
     );
     if (error.message === "Ordine archiviato non trovato") {
       res.status(404).send(error.message);
+      return;
     } else {
       res
         .status(500)
         .send("Errore durante l'eliminazione dell'ordine archiviato");
+      return;
     }
   }
 });
