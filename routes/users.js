@@ -3,6 +3,9 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
+const cors = require("cors");
+
+router.use(cors());
 
 // Route per il login
 router.post("/", async (req, res) => {
